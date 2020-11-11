@@ -1,0 +1,30 @@
+/* navigation bar */
+.header ul {
+    list-style-type: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #778DA9;
+}
+.header li {
+    display: inline;
+    float: right;
+}
+.header li a {
+    display: block;
+    padding: 8px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.header li a:hover {
+    background-color: #FAF33E;
+    color: black;
+}
+.header .active {
+    background-color: #D81159;
+}

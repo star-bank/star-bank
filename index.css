@@ -1,0 +1,9 @@
+/* universal styling */
+body {
+    margin: 0;
+    background-color: #053C5E;
+}
+.parent {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
