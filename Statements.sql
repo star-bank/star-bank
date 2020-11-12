@@ -126,6 +126,15 @@ Where U.u_userkey = r1.u_userkey)r2
 WHERE M.u_userkey = r2.u_userkey)r4
 WHERE r4.LST >= 10)T1;
 
+SELECT sc_constellation AS 'Constellation Locations of Star Clusters'
+FROM StarClusters
+GROUP BY sc_constellation;
+
+SELECT *
+FROM Constellations
+WHERE c_name = (SELECT sc_constellation
+FROM StarClusters
+GROUP BY sc_constellation);
 
 SELECT F.l_ascension
 FROM Location F, (SELECT T1.H - strftime('%H', L.l_ascension) as hD, T1.M-strftime('%M', L.l_ascension) as mD, L.l_ascension
