@@ -73,7 +73,47 @@ Where U.u_userkey = r1.u_userkey)r2
 WHERE M.u_userkey = r2.u_userkey;
 
 
+SELECT SUBSTR(r4.LST,1,1)as H, SUBSTR(r4.LST,2,5)*60 as M
+FROM (SELECT ((280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 + u_longitude)/15 as LST
+from Users M, (SELECT U.u_userkey, (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
+from Users U,(SELECT datetime(u_dateandtime,'utc') as UniTime, u_userkey
+FROM Users
+Where u_timezone = 'PST')r1
+Where U.u_userkey = r1.u_userkey)r2
+WHERE M.u_userkey = r2.u_userkey)r4
+WHERE r4.LST < 10
+UNION
+SELECT SUBSTR(r4.LST,1,2)as H, SUBSTR(r4.LST,3,5)*60 as M
+FROM (SELECT ((280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 + u_longitude)/15 as LST
+from Users M, (SELECT U.u_userkey, (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
+from Users U,(SELECT datetime(u_dateandtime,'utc') as UniTime, u_userkey
+FROM Users
+Where u_timezone = 'PST')r1
+Where U.u_userkey = r1.u_userkey)r2
+WHERE M.u_userkey = r2.u_userkey)r4
+WHERE r4.LST >= 10;
 
+
+SELECT T1.H - strftime('%H', l_ascension) as hD, T1.M-strftime('%M', l_ascension) as mD
+FROM Location, (SELECT SUBSTR(r4.LST,1,1)as H, SUBSTR(r4.LST,2,5)*60 as M
+FROM (SELECT ((280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 + u_longitude)/15 as LST
+from Users M, (SELECT U.u_userkey, (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
+from Users U,(SELECT datetime(u_dateandtime,'utc') as UniTime, u_userkey
+FROM Users
+Where u_timezone = 'PST')r1
+Where U.u_userkey = r1.u_userkey)r2
+WHERE M.u_userkey = r2.u_userkey)r4
+WHERE r4.LST < 10
+UNION
+SELECT SUBSTR(r4.LST,1,2)as H, SUBSTR(r4.LST,3,5)*60 as M
+FROM (SELECT ((280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 + u_longitude)/15 as LST
+from Users M, (SELECT U.u_userkey, (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
+from Users U,(SELECT datetime(u_dateandtime,'utc') as UniTime, u_userkey
+FROM Users
+Where u_timezone = 'PST')r1
+Where U.u_userkey = r1.u_userkey)r2
+WHERE M.u_userkey = r2.u_userkey)r4
+WHERE r4.LST >= 10)T1;
 
 
 
