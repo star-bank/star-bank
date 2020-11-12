@@ -1,11 +1,13 @@
 
 /*Bob lives in Sri Lanka */
-INSERT INTO Users Values ('#0003','Bob', '7jbdaj72', "79° 51' 40.4784''", 'E', "6° 55' 37.4844''",'N','10-31-2020 6:56:23','IST');
+INSERT INTO Users Values ('#0003','Bob', '7jbdaj72', 79.861244, 6.927079,'2020-10-31 06:56:23','IST');
+/*Steve is in Seattle */
+INSERT INTO Users Values ('#0004','Steve', '7nfsk72', -122.335167, 47.608013,'2020-01-13 06:56:23','PST');
 
 SELECT *
 from Users;
 
-/* User can select what information they would like to see depending on the Constellation, Family or Specific coordinates*/
+/* User can select what information they would like to see depending on the Constellation Name, Family or Specific coordinates*/
 SELECT *
 from Constellations
 where c_name ='Ursa Major';
@@ -16,9 +18,9 @@ where c_family ='Zodiac';
 
 SELECT c_name, cs_starNames
 FROM ConstellationStars, Constellations
-WHERE c_constellationkey = cs_constellationkey;
+WHERE c_constellationkey = cs_constellationkey and c_name= 'Ursa Major';
 
-/* */
+/*Random Facts about the Constellations*/
 SELECT c_name, MAX(cs_amountofstars)
 FROM ConstellationStars, Constellations
 WHERE cs_constellationkey=c_constellationkey;
@@ -43,9 +45,37 @@ Calculate Greenwich mean sidereal time (GMST).
 Using the local longitude, shift GMST to LST.
 Display LST in hours, minutes, and seconds. */
 
-/*
-SELECT 
-From Users
-WHERE u_timezone = 'PST';*/
+/*Change to UTC*/
+SELECT datetime(u_dateandtime,'utc') as UniTime
+FROM Users
+Where u_timezone = 'PST';
+
+/* Calculate Time of the UTC times */
+SELECT (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as Jul
+from (SELECT datetime(u_dateandtime,'utc') as UniTime
+FROM Users
+Where u_timezone = 'PST')r1;
+
+/*GMST*/
+SELECT (280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 as GMST
+from (SELECT (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
+from (SELECT datetime(u_dateandtime,'utc') as UniTime
+FROM Users
+Where u_timezone = 'PST')r1)r2;
+
+/*LST*/
+SELECT ((280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 + u_longitude)/15 as LST
+from Users M, (SELECT U.u_userkey, (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
+from Users U,(SELECT datetime(u_dateandtime,'utc') as UniTime, u_userkey
+FROM Users
+Where u_timezone = 'PST')r1
+Where U.u_userkey = r1.u_userkey)r2
+WHERE M.u_userkey = r2.u_userkey;
+
+
+
+
+
 
 DELETE FROM Users where u_name ='Bob';
+DELETE FROM Users where u_name ='Steve';
