@@ -115,6 +115,9 @@ Where U.u_userkey = r1.u_userkey)r2
 WHERE M.u_userkey = r2.u_userkey)r4
 WHERE r4.LST >= 10)T1;
 
+SELECT sc_constellation AS 'Constellation Locations of Star Clusters'
+FROM StarClusters
+GROUP BY sc_constellation;
 
 
 DELETE FROM Users where u_name ='Bob';
