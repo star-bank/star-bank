@@ -119,6 +119,12 @@ SELECT sc_constellation AS 'Constellation Locations of Star Clusters'
 FROM StarClusters
 GROUP BY sc_constellation;
 
+SELECT *
+FROM Constellations
+WHERE c_name = (SELECT sc_constellation
+FROM StarClusters
+GROUP BY sc_constellation);
+
 
 DELETE FROM Users where u_name ='Bob';
 DELETE FROM Users where u_name ='Steve';
