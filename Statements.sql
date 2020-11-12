@@ -1,6 +1,6 @@
 
 /*Steve is in Seattle */
-INSERT INTO Users Values ('#0004','Steve', '7nfsk72', -122.335167, 47.608013,'2020-01-13 06:56:23','PST');
+INSERT INTO Users Values ('#0002','Steve', '7nfsk72', -122.335167, 47.608013,'2020-01-13 06:56:23','PST');
 
 SELECT *
 from Users;
