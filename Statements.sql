@@ -217,7 +217,7 @@ WHERE u_name='Steve' and l_latitude <= u_latitude + 75 and l_latitude >= u_latit
 l_ulongitude <= u_longitude +75 and l_latitude >= u_longitude - 75 and l_locationkey=s_locationkey;
 
 
-SELECT DISTINCT c_name as ConstellationsNear
+SELECT DISTINCT c_name as ConstellationsNearby
 from Stars, Location, Users, Constellations
 WHERE u_name='Steve' and l_latitude <= u_latitude + 75 and l_latitude >= u_latitude - 75 and 
 l_ulongitude <= u_longitude +75 and l_latitude >= u_longitude - 75 and l_locationkey=s_locationkey and s_constellation= c_name;
