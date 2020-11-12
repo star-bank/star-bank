@@ -46,6 +46,19 @@ SELECT *
 from Stars
 WHERE s_name = 'Macondo';
 
+SELECT COUNT(sc_type) AS 'Number of Globular Clusters'
+FROM StarClusters
+WHERE sc_type = 'Globular';
+
+SELECT sc_key, sc_constellation AS 'Constellation Locations of Star Clusters'
+FROM StarClusters
+GROUP BY sc_constellation;
+
+/* about star types */
+SELECT *
+FROM StarType
+WHERE st_color like 'blue%';
+
 /* W is Negative Longitude and E is Postive Longitude*/
 /* S is Negative Latitude and N is Postive Latitude*/
 
