@@ -38,7 +38,7 @@ SELECT *
 FROM StarClusters
 WHERE sc_name= 'M3';
 
-SELECT sc_name
+SELECT sc_name AS 'Open Clusters'
 FROM StarClusters
 WHERE sc_type = 'Open';
 
