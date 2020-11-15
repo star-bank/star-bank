@@ -226,13 +226,13 @@ FROM Location;
 /*This distance seems large but we have yet to add more data to our location table*/
 SELECT DISTINCT s_name as StarsNear
 from Stars, Location, Users
-WHERE u_name='Steve' and l_latitude <= u_latitude + 75 and l_latitude >= u_latitude - 75 and 
-l_ulongitude <= u_longitude +75 and l_latitude >= u_longitude - 75 and l_locationkey=s_locationkey;
+WHERE u_name='Steve' and l_latitude <= u_latitude + 100 and l_latitude >= u_latitude - 100 and 
+l_ulongitude <= u_longitude +100 and l_latitude >= u_longitude - 100 and l_locationkey=s_locationkey;
 
 
 SELECT DISTINCT c_name as ConstellationsNearby
 from Stars, Location, Users, Constellations
-WHERE u_name='Steve' and l_latitude <= u_latitude + 75 and l_latitude >= u_latitude - 75 and 
-l_ulongitude <= u_longitude +75 and l_latitude >= u_longitude - 75 and l_locationkey=s_locationkey and s_constellation= c_name;
+WHERE u_name='Steve' and l_latitude <= u_latitude + 100 and l_latitude >= u_latitude - 100 and 
+l_ulongitude <= u_longitude +100 and l_latitude >= u_longitude - 100 and l_locationkey=s_locationkey and s_constellation= c_name;
 
 DELETE FROM Users where u_name ='Steve';
