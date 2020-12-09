@@ -1,7 +1,7 @@
 <?php
 class StarBank extends SQLite3 {
     function __construct() {
-        $this->open('star-bank1.db')
+        $this->open('star-bank1.db');
     }
 }
     $db = new StarBank();
@@ -12,9 +12,9 @@ class StarBank extends SQLite3 {
     // $hId = $_GET['hId'];
 
     $query = $db->prepare("SELECT * FROM Constellations");
-    // $query->bindValue(':id', $hId, SQLITE3_INTEGER);
+    $query->bindValue(':id', $hId, SQLITE3_INTEGER);
     $results = $query->execute()->fetchArray();
-    echo $results['cs_starNames'];  
+    echo $results[''];  
     // $pdo = new PDO('sqlite:/Data/star-bank1.db');
 
     // $result = $pdo->query("SELECT * FROM Constellations");

@@ -56,7 +56,7 @@ def PrintingConst(_conn):
     print("Q1")
 
     cur = _conn.cursor()
-    cur.execute("SELECT * FROM Constellations")
+    cur.execute(SELECT * from Stars WHERE s_name = 'Macondo')
 
     rows = cur.fetchall()
 
