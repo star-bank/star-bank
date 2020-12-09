@@ -3,7 +3,7 @@
 and then we would give them their nearby constellations if there is any */
 
 /*Steve is in Seattle */
-INSERT INTO Users Values ('#0002','Steve', '7nfsk72', -122.335167, 47.608013,'2020-01-13 06:56:23','PST');
+INSERT INTO Users Values ('#0002','Steve', '7nfsk72', -122.335167, 47.608013,'2020-01-13 06:56:23');
 
 SELECT *
 from Users;
@@ -61,28 +61,25 @@ Display LST in hours, minutes, and seconds. */
 
 /*Change to UTC*/
 SELECT datetime(u_dateandtime,'utc') as UniTime
-FROM Users
-Where u_timezone = 'PST';
+FROM Users;
 
 /* Calculate Time of the UTC times */
 SELECT (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as Jul
 from (SELECT datetime(u_dateandtime,'utc') as UniTime
-FROM Users
-Where u_timezone = 'PST')r1;
+FROM Users)r1;
 
 /*GMST*/
 SELECT (280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 as GMST
 from (SELECT (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
 from (SELECT datetime(u_dateandtime,'utc') as UniTime
 FROM Users
-Where u_timezone = 'PST')r1)r2;
+)r1)r2;
 
 /*LST*/
 SELECT ((280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 + u_longitude)/15 as LST
 from Users M, (SELECT U.u_userkey, (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
 from Users U,(SELECT datetime(u_dateandtime,'utc') as UniTime, u_userkey
-FROM Users
-Where u_timezone = 'PST')r1
+FROM Users)r1
 Where U.u_userkey = r1.u_userkey)r2
 WHERE M.u_userkey = r2.u_userkey;
 
@@ -173,8 +170,7 @@ FROM Location L, (SELECT SUBSTR(r4.LST,1,1)as H, SUBSTR(r4.LST,2,5)*60 as M
 FROM (SELECT ((280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 + u_longitude)/15 as LST
 from Users M, (SELECT U.u_userkey, (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
 from Users U,(SELECT datetime(u_dateandtime,'utc') as UniTime, u_userkey
-FROM Users
-Where u_timezone = 'PST')r1
+FROM Users)r1
 Where U.u_userkey = r1.u_userkey)r2
 WHERE M.u_userkey = r2.u_userkey)r4
 WHERE r4.LST < 10
@@ -183,8 +179,7 @@ SELECT SUBSTR(r4.LST,1,2)as H, SUBSTR(r4.LST,3,5)*60 as M
 FROM (SELECT ((280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 + u_longitude)/15 as LST
 from Users M, (SELECT U.u_userkey, (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
 from Users U,(SELECT datetime(u_dateandtime,'utc') as UniTime, u_userkey
-FROM Users
-Where u_timezone = 'PST')r1
+FROM Users)r1
 Where U.u_userkey = r1.u_userkey)r2
 WHERE M.u_userkey = r2.u_userkey)r4
 WHERE r4.LST >= 10)T1)TF
@@ -202,7 +197,7 @@ FROM (SELECT ((280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.
 from Users M, (SELECT U.u_userkey, (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
 from Users U,(SELECT datetime(u_dateandtime,'utc') as UniTime, u_userkey
 FROM Users
-Where u_timezone = 'PST')r1
+)r1
 Where U.u_userkey = r1.u_userkey)r2
 WHERE M.u_userkey = r2.u_userkey)r4
 WHERE r4.LST < 10
@@ -211,8 +206,7 @@ SELECT SUBSTR(r4.LST,1,2)as H, SUBSTR(r4.LST,3,5)*60 as M
 FROM (SELECT ((280.46061837+360.98564736629*(r2.t1*36525)+0.000387933*(r2.t1*r2.t1) - (r2.t1*r2.t1*r2.t1)/38710000)%360 + u_longitude)/15 as LST
 from Users M, (SELECT U.u_userkey, (strftime ('%J', r1.UniTime) - 2451545.0)/36525 as t1
 from Users U,(SELECT datetime(u_dateandtime,'utc') as UniTime, u_userkey
-FROM Users
-Where u_timezone = 'PST')r1
+FROM Users)r1
 Where U.u_userkey = r1.u_userkey)r2
 WHERE M.u_userkey = r2.u_userkey)r4
 WHERE r4.LST >= 10)T1)TF
@@ -226,13 +220,13 @@ FROM Location;
 /*This distance seems large but we have yet to add more data to our location table*/
 SELECT DISTINCT s_name as StarsNear
 from Stars, Location, Users
-WHERE u_name='Steve' and l_latitude <= u_latitude + 100 and l_latitude >= u_latitude - 100 and 
-l_ulongitude <= u_longitude +100 and l_latitude >= u_longitude - 100 and l_locationkey=s_locationkey;
+WHERE u_name='Steve' and l_latitude <= u_latitude + 25 and l_latitude >= u_latitude - 25 and 
+l_ulongitude <= u_longitude +25 and l_latitude >= u_longitude - 25 and l_locationkey=s_locationkey;
 
 
 SELECT DISTINCT c_name as ConstellationsNearby
 from Stars, Location, Users, Constellations
-WHERE u_name='Steve' and l_latitude <= u_latitude + 100 and l_latitude >= u_latitude - 100 and 
-l_ulongitude <= u_longitude +100 and l_latitude >= u_longitude - 100 and l_locationkey=s_locationkey and s_constellation= c_name;
+WHERE u_name='Steve' and l_latitude <= u_latitude +25  and l_latitude >= u_latitude - 25 and 
+l_ulongitude <= u_longitude +25 and l_latitude >= u_longitude - 25 and l_locationkey=s_locationkey and s_constellation= c_name;
 
 DELETE FROM Users where u_name ='Steve';
