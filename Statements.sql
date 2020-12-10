@@ -229,4 +229,4 @@ from Stars, Location, Users, Constellations
 WHERE u_name='Steve' and l_latitude <= u_latitude +25  and l_latitude >= u_latitude - 25 and 
 l_ulongitude <= u_longitude +25 and l_latitude >= u_longitude - 25 and l_locationkey=s_locationkey and s_constellation= c_name;
 
-DELETE FROM Users where u_name ='Steve';
+-- DELETE FROM Users where u_name ='Steve';
