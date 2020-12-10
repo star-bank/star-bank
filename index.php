@@ -17,8 +17,8 @@
     <body>
         <!-- <style type="text/css">
             body { background: gray !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
-        </style>
-        <div class="parent"> -->
+        </style> -->
+        <div class="parent">
             <!-- navigation bar -->
             <div class="header">
                 <ul>
@@ -32,7 +32,8 @@
             
             <!-- homepage contents -->
             <div class="main">
-                <h1>This is a list of our Tables:</h1>
+                <h1>Welcome to Star Bank! </h1>
+                <h2>List of Tables in Star Bank:</h2>
                 <tbody>
                             <?php include'list.php'?>
                 </tbody>

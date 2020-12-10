@@ -1,14 +1,4 @@
-<?php
-// Display all sqlite tables
-    $db = new SQLite3('Data/star-bank1.db');
-    $tablesquery = $db->query("SELECT name FROM sqlite_master WHERE type='table';");
 
-    while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
-        if ($table['name'] != "sqlite_sequence") {
-            echo $table['name'] . ' <br />';
-        }
-    }
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +30,7 @@
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-6 well">
-                <h3 class="text-primary">PHP - Search Data In SQLite3</h3>
+                <h3 class="text-primary">Look Up Stars ⭐ </h3>
                 <hr style="border-top:1px dotted #ccc;"/>
                 
                 <div class="col-md-8">

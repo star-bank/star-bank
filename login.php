@@ -5,7 +5,7 @@ session_start();
    {
       function __construct()
       {
-         $this->open('star-bank1.db');
+         $this->open('Data/star-bank1.db');
       }
    }
    $db = new MyDB();
