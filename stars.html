@@ -40,7 +40,7 @@
                  
                              $sql =<<<EOF
                                 SELECT DISTINCT maker FROM Product ORDER BY maker
-                 EOF;
+                                 EOF;
                  
                              $ret = $db->query($sql);
                              while ($row = $ret->fetchArray()) {
