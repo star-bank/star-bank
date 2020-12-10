@@ -19,7 +19,7 @@
             <div class="header">
                 <ul>
                     <li><a href="login.html">Login</a></li>
-                    <li><a href="star_clusters.html">Star Custers</a></li>
+                    <li><a href="star_clusters.php">Star Custers</a></li>
                     <li><a class="active" href="constellation.php">Constellation</a></li>
                     <li><a href="stars.php">Stars</a></li>
                     <li style="float:left"><a href="index.php">Star Bank</a></li>
