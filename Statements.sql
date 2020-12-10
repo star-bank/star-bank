@@ -221,7 +221,7 @@ FROM Location;
 SELECT DISTINCT s_name as StarsNear
 from Stars, Location, Users
 WHERE u_name='Steve' and l_latitude <= u_latitude + 25 and l_latitude >= u_latitude - 25 and 
-l_ulongitude <= u_longitude +25 and l_latitude >= u_longitude - 25 and l_locationkey=s_locationkey;
+l_longitude <= u_longitude +25 and l_longitude >= u_longitude - 25 and l_locationkey=s_locationkey;
 
 
 SELECT DISTINCT c_name as ConstellationsNearby

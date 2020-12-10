@@ -38,14 +38,40 @@
                 <tbody>
                             <?php include'list.php'?>
                 </tbody>
-                
-                
+                <br>
 
-            <div class="container">
+            <div class="col-md-8">
+                <h2>Find Stars Near You 🤩</h2>
+                    <form method="POST" class="form-inline" action="">
+                        <label>Search Stars In Location Near You:</label>
+                        <input type="text" name="long" class="form-control" placeholder="Enter Longitude" required="required"/>
+                        <input type="text" name="lat" class="form-control" placeholder="Enter Latitude" required="required"/>
+                        <button class="btn btn-success" name="search"><span class="glyphicon glyphicon-search"></span> Search</button>
+                    </form>
+                    <br />
+                    <table class="table table-bordered">
+                        <thead class="alert-info">
+                            <tr >
+                                <th>Star Name</th>
+                                <th>Constellation Name</th>
+                                <th>Location #</th>
+                                <th>Longitude</th>
+                                <th>Latitude</th>
+                                <th>Ascension</th>
+                                <th>Declination</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php include'search_nearyou.php'?>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="container">
                 <h2>Sign Up for Star Bank</h2>
                 <form action="insert.php" method="POST" class="form-inline" action="">
                     <label>Enter Your Name:</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter username..." required="required"/><br>
+                    <input type="text" name="name" class="form-control" placeholder="Enter username..." /><br>
                     <label>Enter a password:</label>
                     <input type="text" name="password" class="form-control" placeholder="Enter password..."/><br>
                     <label>Enter Longitude:</label>
@@ -60,7 +86,6 @@
                 <!-- <button type="button" href="register.php" class="btn btn-primary">Sign Up</button>
                 <button type="button" href="login.php" class="btn btn-primary active">Log in</button> -->
             </div>
-                
                 
             </div>
             <div class="footer">
