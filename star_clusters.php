@@ -1,14 +1,3 @@
-<?php
-// Display all sqlite tables
-    $db = new SQLite3('Data/star-bank1.db');
-    $tablesquery = $db->query("SELECT name FROM sqlite_master WHERE type='table';");
-
-    while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
-        if ($table['name'] != "sqlite_sequence") {
-            echo $table['name'] . ' <br />';
-        }
-    }
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,8 +17,8 @@
                 <ul>
                     <li><a href="login.html">Login</a></li>
                     <li><a href="star_clusters.html">Star Custers</a></li>
-                    <li><a href="constellation.php">Constellation</a></li>
-                    <li><a class="active" href="stars.php">Stars</a></li>
+                    <li><a class="active" href="constellation.php">Constellation</a></li>
+                    <li><a href="stars.php">Stars</a></li>
                     <li style="float:left"><a href="index.php">Star Bank</a></li>
                 </ul>
             </div>
@@ -50,17 +39,15 @@
                     <table class="table table-bordered">
                         <thead class="alert-info">
                             <tr >
-                                <th>Star #</th>
+                                <th>Star Cluster #</th>
                                 <th>Name</th>
-                                <th>Location #</th>
+                                <th>Nickname</th>
                                 <th>Constellation</th>
-                                <th>Distance</th>
-                                <th>Category</th>
-                                <th>Star Custer</th>
+                                <th>Type</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php include'search_data.php'?>
+                            <?php include'search_cluster.php'?>
                         </tbody>
                     </table>
                 </div>

@@ -30,9 +30,9 @@
                 <ul>
                     <li><a href="login.html">Login</a></li>
                     <li><a href="star_clusters.html">Star Custers</a></li>
-                    <li><a href="constellation.html">Constellation</a></li>
-                    <li><a href="stars.html">Stars</a></li>
-                    <li style="float:left"><a class="active" href="index.html">Star Bank</a></li>
+                    <li><a href="constellation.php">Constellation</a></li>
+                    <li><a href="stars.php">Stars</a></li>
+                    <li style="float:left"><a class="active" href="index.php">Star Bank</a></li>
                 </ul>
             </div>
             
