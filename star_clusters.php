@@ -19,6 +19,7 @@
             <div class="header">
                 <ul>
                     <li><a href="login.html">Login</a></li>
+                    <li><a href="location.php">Locations</a></li>
                     <li><a href="star_clusters.php">Star Custers</a></li>
                     <li><a class="active" href="constellation.php">Constellation</a></li>
                     <li><a href="stars.php">Stars</a></li>

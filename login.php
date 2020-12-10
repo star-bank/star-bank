@@ -8,28 +8,29 @@ session_start();
          $this->open('Data/star-bank1.db');
       }
    }
+
    $db = new MyDB();
+
    if(!$db){
       echo $db->lastErrorMsg();
    } else {
-      //echo "Opened database successfully\n";
+      echo "Opened database successfully\n";
    }
 
    $sql ='SELECT * from Users where u_name="'.$_POST["usr_name"].'";';
 
-
    $ret = $db->query($sql);
+
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
-      $id=$row['ID'];
-      $username=$row["USERNAME"];
-      $password=$row['PASSWORD'];
+      $id = $row['ID'];
+      $username = $row["USERNAME"];
+      $password = $row['PASSWORD'];
   }
     if ($id!=""){
         if ($password==$_POST["pwd"]){
            $_SESSION["login"]=$username;
            header('Location: index.php');    
         }else{
-          
           echo "Wrong Password";
         }
       }else{

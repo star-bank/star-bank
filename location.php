@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,9 +20,9 @@
             <div class="header">
                 <ul>
                     <li><a href="login.html">Login</a></li>
-                    <li><a href="location.php">Locations</a></li>
-                    <li><a href="star_clusters.php">Star Custers</a></li>
-                    <li><a class="active" href="constellation.php">Constellation</a></li>
+                    <li><a class="active" href="location.php">Locations</a></li>
+                    <li><a href="star_clusters.html">Star Custers</a></li>
+                    <li><a href="constellation.php">Constellation</a></li>
                     <li><a href="stars.php">Stars</a></li>
                     <li style="float:left"><a href="index.php">Star Bank</a></li>
                 </ul>
@@ -30,12 +31,12 @@
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-6 well">
-                <h3 class="text-primary">Look Up Constellations 🌌</h3>
+                <h3 class="text-primary">Look Up Stars ⭐ </h3>
                 <hr style="border-top:1px dotted #ccc;"/>
                 
                 <div class="col-md-8">
                     <form method="POST" class="form-inline" action="">
-                        <label>Search Constellations:</label>
+                        <label>Search Stars:</label>
                         <input type="text" name="keyword" class="form-control" placeholder="Enter here..." required="required"/>
                         <button class="btn btn-success" name="search"><span class="glyphicon glyphicon-search"></span> Search</button>
                     </form>
@@ -43,18 +44,16 @@
                     <table class="table table-bordered">
                         <thead class="alert-info">
                             <tr >
-                                <th>Constellation #</th>
-                                <th>Name</th>
-                                <th>Star Sign</th>
-                                <th>Year of Discovery</th>
-                                <th>Family</th>
-                                <th>Visibility</th>
-                                <th>Area</th>
-                                <th>Quadrant</th>
+                                <th>Star Name</th>
+                                <th>Location #</th>
+                                <th>Longitude</th>
+                                <th>Latitude</th>
+                                <th>Ascension</th>
+                                <th>Declination</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php include'search_const.php'?>
+                            <?php include'search_location.php'?>
                         </tbody>
                     </table>
                 </div>
