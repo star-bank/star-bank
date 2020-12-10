@@ -20,7 +20,11 @@
         <link rel="stylesheet" type="text/css" href="main.css">
 
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
     </head>
     <body>
         
@@ -40,22 +44,13 @@
             <div class="main">
                 <h1>this is <?php echo "GROSS!"; ?></h1>
                 <h1>BLERG!</h1>
-                <!-- <script>
-                    function populateField_SearchPt() 
-                    {
-                        var inputId = document.getElementById("c_name").value; //we get the user input value and put it in a var
+                
 
-                        var xhttp = new XMLHttpRequest();
-                        xhttp.open("GET", "constellation.php?hId=" + inputId, true); // we're passing the hId to the server as a parameter
-                        xhttp.onreadystatechange = function() {
-                            if (this.readyState == 4 && this.status == 200) {
-                                document.getElementById("SearchBoxPt").value = this.responseText;
-                            }
-                        };
-                        xhttp.send(); 
-
-                    }
-                </script> -->
+            <div class="container">
+                <h2>Log In/Sign Up Form Example in PHP and SQLITE Database</h2>
+                <button type="button" href="register.php" class="btn btn-primary">Sign Up</button>
+                <button type="button" href="login.php" class="btn btn-primary active">Log in</button>
+            </div>
                 
                 
             </div>

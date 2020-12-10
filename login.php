@@ -15,7 +15,7 @@ session_start();
       //echo "Opened database successfully\n";
    }
 
-   $sql ='SELECT * from Users where USERNAME="'.$_POST["usr_name"].'";';
+   $sql ='SELECT * from Users where u_name="'.$_POST["usr_name"].'";';
 
 
    $ret = $db->query($sql);
