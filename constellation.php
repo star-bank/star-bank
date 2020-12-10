@@ -34,7 +34,7 @@
                 
                 <div class="col-md-8">
                     <form method="POST" class="form-inline" action="">
-                        <label>Search Stars:</label>
+                        <label>Search Constellations:</label>
                         <input type="text" name="keyword" class="form-control" placeholder="Enter here..." required="required"/>
                         <button class="btn btn-success" name="search"><span class="glyphicon glyphicon-search"></span> Search</button>
                     </form>
@@ -53,7 +53,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php include'search_data.php'?>
+                            <?php include'search_const.php'?>
                         </tbody>
                     </table>
                 </div>
